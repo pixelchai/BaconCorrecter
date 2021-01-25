@@ -29,6 +29,7 @@ def correct(msg):
                 not word.isupper(),
                 not re.fullmatch(RE_URL, word),
                 not (word[-1] in ['s', 'z'] and word[:-1].isupper()),
+                not (sum([c.isupper() for c in word[1:]])==1)
             )):
                 word = word[0] + word[1:].lower()
         ret += word

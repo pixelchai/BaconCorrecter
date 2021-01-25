@@ -27,10 +27,14 @@ class TestCorrection(unittest.TestCase):
         self.assertNotNeedsCorrecting("Send those URLs for the LOLz")  # slightly strange but I'll allow it
         self.assertNotNeedsCorrecting("https://www.google.com/")
 
+        self.assertNotNeedsCorrecting("Allow some PascalCase or camelCase")
+        # note: this allows for stuff like "hello thEre", however, this is hard to distinguish from camelCase so I'll
+        #       be lenient for cases like this for now (I suppose it could also be a genuine typo)
+
 
     def test_correction(self):
-        self.assertCorrection("HeLlO thEre", "Hello there")
-        self.assertCorrection("HeLlO  thEre ! ", "Hello  there ! ")
+        self.assertCorrection("HeLlO tHerE", "Hello there")
+        self.assertCorrection("HeLlO  tHeRe ! ", "Hello  there ! ")
 
         self.assertCorrection("Don't correct URLs like git.io/JtZ5T", "Don't correct URLs like git.io/JtZ5T")
 
