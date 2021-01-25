@@ -25,6 +25,7 @@ class TestCorrection(unittest.TestCase):
         self.assertNotNeedsCorrecting("I like doing OOP!man I like OOP")   # etc..
 
         self.assertNotNeedsCorrecting("Send those URLs for the LOLz")  # slightly strange but I'll allow it
+        self.assertNotNeedsCorrecting("https://www.google.com/")
 
 
     def test_correction(self):
